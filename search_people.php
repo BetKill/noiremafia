@@ -160,7 +160,14 @@ include 'interaction_with_the_data_base/sql_query_for_position.php';
 							        while($row = $result_name_for_search->fetch_row()) {
 							            if(substr(mb_strtolower($row[0]), 0, mb_strtolower(strlen($name_user))) == mb_strtolower($name_user)){
     							                $avatar_1 = "https://cdn.discordapp.com/avatars/" . $row[1]. "/". $row[2] . ".png";
-    							                ?><p style = "text-align: center; font-size: 50px; background: #212229; padding: 15px 0; "><a class = 'gyper' href = "https://noiremafia.ru/search_name.php?my_datas=<?php echo urlencode($row[3]);?>"><?php echo $row[0]; ?></a><img style = " border-radius: 50%; margin:0px 60px;" src="<?php echo $avatar_1;?>" alt = "" align = "center"></p><?php
+    							                ?><p style = "text-align: center; font-size: 50px; background: #212229; padding: 15px 0; "><a class = 'gyper' href = "https://noiremafia.ru/search_name.php?my_datas=<?php echo urlencode($row[3]);?>"><?php echo $row[0]; ?></a><img style = " border-radius: 50%; margin:0px 60px;" src="<?php
+    							                if(stristr($row[2], 'https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png') === FALSE) {
+                                                        echo $avatar_1;
+                                                      }
+                                                      else{
+                                                          echo $row[2];
+                                                      }
+    							                ?>" alt = "" align = "center" height = 80px></p><?php
                                         }
         							}
                                         ?>
